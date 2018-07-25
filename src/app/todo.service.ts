@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { HttpClient } from '@angular/common/http';
 
 import { Todo } from './todo';
 
@@ -7,16 +10,15 @@ import { Todo } from './todo';
     providedIn: 'root'
 })
 export class TodoService {
-    
-    constructor() { }
-    
+
+    constructor(private http: HttpClient) { }
+
     public getTodos(): Observable<Todo[]> {
-        return of(mockTodos);
+        return this.http
+            .get('http://demo4526300.mockable.io/api/todos')
+            .pipe(map<any, Todo[]>((response) => {
+                return response;
+            }));
     }
 }
 
-const mockTodos: Todo[] = [
-    { name: 'Todo 1' },
-    { name: 'Todo 2' },
-    { name: 'Todo 3' }
-];

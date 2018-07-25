@@ -39,20 +39,20 @@ describe('AppComponent', () => {
     it('should create the app', async(() => {
         expect(app).toBeTruthy();
     }));
-    
+
     it(`should have as title 'TODO example'`, async(() => {
         expect(app.title).toEqual('TODO example');
     }));
-    
+
     it('should render title in a h1 tag', async(() => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('h1').textContent).toContain('Welcome to TODO example!');
     }));
 
-    describe('#addTodo', () => {    
+    describe('#addTodo', () => {
         it('should add todo', () => {
-            const todo: string = 'Todo example';
+            const todo = 'Todo example';
             app.todos = [];
             app.addTodo(todo);
             expect(app.todos[0].name).toBe(todo);

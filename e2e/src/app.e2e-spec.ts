@@ -18,6 +18,6 @@ describe('workspace-project App', () => {
     page.fillInput('TODO EXAMPLE');
     page.clickAddButton();
     expect(page.getLastToDo()).toContain('TODO EXAMPLE');
-    browser.sleep(5000);
+    browser.sleep(3000);
   });
 });
